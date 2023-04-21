@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import './ItemComp.dart';
 
@@ -27,30 +25,35 @@ class _GridCompState extends State<GridComp> {
   @override
   Widget build(BuildContext context) {
     widget.createItemsList();
-    return CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          pinned: true,
-          expandedHeight: 250.0,
-          flexibleSpace: FlexibleSpaceBar(
-            title: Image(image: AssetImage('assets/logo.png')),
+    final query = MediaQuery.of(context);
+    final double expandedHeight = query.size.height / 2;
+    const gap = 12.0;
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            alignment: Alignment.bottomCenter,
+            height: expandedHeight,
+            child: const Image(
+              image:  AssetImage('assets/logo.png'),
+            ),
           ),
-        ),
-        SliverGrid(
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 200.0,
-            mainAxisSpacing: 10.0,
-            crossAxisSpacing: 10.0,
-            childAspectRatio: 2.0,
-          ),
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              return widget.itemList[index];
-            },
-            childCount: widget.itemList.length,
-          ),
-        ),
-      ],
+          ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: expandedHeight,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Wrap(
+                    spacing: gap,
+                    runSpacing: gap,
+                    children: widget.itemList,
+                  ),
+                ],
+              )),
+        ],
+      ),
     );
   }
 }
