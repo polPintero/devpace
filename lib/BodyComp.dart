@@ -30,15 +30,33 @@ class _BodyCompState extends State<BodyComp> {
       body: SizedBox.expand(
         child: Scrollbar(child: GridComp(titlesList: titlesList)),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          dynamic result = await dialogComp(context);
-          if (result == null) return;
-          titlesList.add(result);
-          setState(() {});
-        },
-        tooltip: 'Add Item',
-        child: const Icon(Icons.add),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          titlesList.isNotEmpty ? Padding(
+            padding: const EdgeInsets.only(left: 30),
+            child: FloatingActionButton(
+              onPressed: () async {
+                dynamic result = await dialogComp(context);
+                if (result == null) return;
+                titlesList.add(result);
+                setState(() {});
+              },
+              tooltip: 'Delete last item',
+              child: const Icon(Icons.delete),
+            ),
+          ) : SizedBox(),
+          FloatingActionButton(
+            onPressed: () async {
+              dynamic result = await dialogComp(context);
+              if (result == null) return;
+              titlesList.add(result);
+              setState(() {});
+            },
+            tooltip: 'Add Item',
+            child: const Icon(Icons.add),
+          ),
+        ],
       ),
     );
   }
