@@ -28,6 +28,7 @@ class _GridCompState extends State<GridComp> {
     final query = MediaQuery.of(context);
     final double expandedHeight = query.size.height / 2;
     const gap = 12.0;
+    
     return SingleChildScrollView(
       child: Column(
         children: [

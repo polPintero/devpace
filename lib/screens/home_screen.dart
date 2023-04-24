@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'GridComp.dart';
-import './dialogComp.dart';
+import '../GridComp.dart';
+import '../dialogComp.dart';
 
-class BodyComp extends StatefulWidget {
-  const BodyComp({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<BodyComp> createState() => _BodyCompState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _BodyCompState extends State<BodyComp> {
+class _HomeScreenState extends State<HomeScreen> {
   int length = 0;
   List titlesList = [];
   void createTitleList() {
