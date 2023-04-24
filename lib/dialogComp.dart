@@ -27,7 +27,7 @@ Future dialogComp(context) {
           TextButton(
             child: Text('Done'),
             onPressed: () {
-              Navigator.pop(context, itemTitle);
+              Navigator.pop(context, itemTitle.trim());
             },
           ),
         ],

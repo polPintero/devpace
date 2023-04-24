@@ -37,9 +37,7 @@ class _BodyCompState extends State<BodyComp> {
             padding: const EdgeInsets.only(left: 30),
             child: FloatingActionButton(
               onPressed: () async {
-                dynamic result = await dialogComp(context);
-                if (result == null) return;
-                titlesList.add(result);
+                titlesList.removeLast();
                 setState(() {});
               },
               tooltip: 'Delete last item',
@@ -49,7 +47,7 @@ class _BodyCompState extends State<BodyComp> {
           FloatingActionButton(
             onPressed: () async {
               dynamic result = await dialogComp(context);
-              if (result == null) return;
+              if (result == null || result == '') return;
               titlesList.add(result);
               setState(() {});
             },
