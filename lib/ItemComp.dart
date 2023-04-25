@@ -7,12 +7,11 @@ class ItemComp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    const double gap = 20.0;
 
     return Container(
-      padding: const EdgeInsets.all(gap),
+      padding: const EdgeInsets.all(20),
       width: mediaQuery.size.width * 0.4,
-      height: mediaQuery.size.height / 7,
+      height: mediaQuery.size.height / 4,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: Colors.teal,
@@ -25,7 +24,12 @@ class ItemComp extends StatelessWidget {
           ),
         ],
       ),
-      child: Text(title),
+      child: Text(
+        title,
+        maxLines: 7,
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(fontSize: 20),
+      ),
     );
   }
 }
