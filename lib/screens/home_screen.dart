@@ -28,10 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Scrollbar(
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 8),
-          child: GridComp(titlesList: titlesList),
-        ),
+        child: GridComp(titlesList: titlesList),
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
